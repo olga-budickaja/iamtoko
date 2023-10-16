@@ -2,6 +2,7 @@ import './globals.css'
 import { Vollkorn, Roboto } from 'next/font/google'
 import { i18n, locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/dictionary';
+import { ThemeProvider } from '@/context/ThemeProvider';
 
 
 const vollcorn =  Vollkorn({
@@ -43,7 +44,9 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={`${vollcorn.variable} ${roboto.variable}`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
